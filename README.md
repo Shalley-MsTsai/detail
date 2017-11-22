@@ -1,5 +1,5 @@
 # TheThreeKingdoms
-Android midterm project
+Android project
 
 实现三国人物辞典，包括名字、性别、生卒年月、籍贯、势力。
 <br/>
