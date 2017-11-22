@@ -56,8 +56,35 @@ public class DBPerson {
         db.delete("person", Person.ID+"=?", new String[]{String.valueOf(Person_id)});
         db.close();
     }
+    // 按照属性值查找符合条件的元组
+    // attributes: 条件语句中的属性名； values: 对应的属性取值
+    public ArrayList<Person> getPersonList(String[] attributes, String[] values){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<Person> persons = new ArrayList<Person>();
+        Cursor cursor = null;
+        String[] columns = new String[]{Person.ID, Person.PIC, Person.NAME, Person.SEX,
+                Person.BIRTH_DEATH, Person.BIRTHPLACE, Person.NATION};
+        String selection = attributes[0]+"=?";
+        for(int i = 1; i < attributes.length; i++)
+            selection += " and " + attributes[i] + "=?";
+        cursor = db.query("person", columns, selection, values, null, null, Person.ID);
 
-    // 返回三国人物表中所有元组
+        while(cursor.moveToNext()){
+            persons.add(new Person (cursor.getInt(cursor.getColumnIndex(Person.ID)),
+                    cursor.getInt(cursor.getColumnIndex(Person.PIC)),
+                    cursor.getString(cursor.getColumnIndex(Person.NAME)),
+                    cursor.getString(cursor.getColumnIndex(Person.SEX)),
+                    cursor.getString(cursor.getColumnIndex(Person.BIRTH_DEATH)),
+                    cursor.getString(cursor.getColumnIndex(Person.BIRTHPLACE)),
+                    cursor.getString(cursor.getColumnIndex(Person.NATION)) ));
+        }
+        cursor.close();
+        db.close();
+
+        return persons;
+    }
+
+    // 返回三国人物数据库中所有元组
     public ArrayList<Person> getPersonList(){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         ArrayList<Person> persons = new ArrayList<Person>();
@@ -79,7 +106,7 @@ public class DBPerson {
         db.close();
         return persons;
     }
-
+    // 恢复原始数据库
     public void restore(){
         dbHelper.restore(dbHelper.getReadableDatabase());
     }

@@ -22,7 +22,13 @@ public class MainActivity extends AppCompatActivity {
         // -------------------测试数据库的显示---------------------
         // 获取数据库的所有元组
         final DBPerson dbPerson = new DBPerson(MainActivity.this);
-        final ArrayList<Person> persons = dbPerson.getPersonList();
+        //final ArrayList<Person> persons = dbPerson.getPersonList();
+
+        // ------------------测试数据库的条件查询语句--------------
+        // 查询吴国的女性人物
+        String[] attributes = new String[]{"nation", "sex"};
+        String[] values = new String[]{"吴", "女"};
+        final ArrayList<Person> persons = dbPerson.getPersonList(attributes, values);
 
         // 人物列表
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);

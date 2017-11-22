@@ -62,11 +62,26 @@ public class Person {
     public String getNation(){
         return nation;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-
     public void setPic(int pic){
         this.pic = pic;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setSex(String sex){
+        this.sex = sex;
+    }
+    public void setBirthDeath(String birth_death){
+        this.birth_death = birth_death;
+    }
+    public void setBirthplace(String birthplace){
+        this.birthplace = birthplace;
+    }
+    public void setNation(String nation){
+        this.nation = nation;
     }
 }
