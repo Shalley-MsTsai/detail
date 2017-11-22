@@ -38,6 +38,7 @@ public class DBPerson {
         person.setId((int)Person_id);
         return (int)Person_id;
     }
+
     // 更改数据库已有元组的信息，person为信息更新后的人物
     public void update(Person person){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -50,12 +51,14 @@ public class DBPerson {
         cValues.put(Person.NATION, person.getNation());
         db.update("person", cValues, Person.ID+"=?", new String[]{String.valueOf(person.getId())});
     }
+
     // 按照id删除三国人物
     public void delete(int Person_id){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         db.delete("person", Person.ID+"=?", new String[]{String.valueOf(Person_id)});
         db.close();
     }
+
     // 按照属性值查找符合条件的元组
     // attributes: 条件语句中的属性名； values: 对应的属性取值
     public ArrayList<Person> getPersonList(String[] attributes, String[] values){
@@ -106,6 +109,7 @@ public class DBPerson {
         db.close();
         return persons;
     }
+
     // 恢复原始数据库
     public void restore(){
         dbHelper.restore(dbHelper.getReadableDatabase());

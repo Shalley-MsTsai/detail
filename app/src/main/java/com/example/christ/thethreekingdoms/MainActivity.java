@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         final MainAdapter mainAdapter = new MainAdapter(MainActivity.this, persons);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mainAdapter);
-
+        
         mainAdapter.setOnItemClickListener(new MainAdapter.OnItemClickListener() {
             // ---------------测试数据库的元组更新---------------------
             // 点击后更改
