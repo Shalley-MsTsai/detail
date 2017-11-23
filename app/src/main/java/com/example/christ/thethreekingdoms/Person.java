@@ -1,11 +1,13 @@
 package com.example.christ.thethreekingdoms;
 
+import java.io.Serializable;
+
 /**
  * Created by christ on 2017/11/21.
  * 三国人物
  */
 
-public class Person {
+public class Person implements Serializable{
     final static String ID = "id";
     final static String PIC = "pic";
     final static String NAME = "name";

@@ -17,9 +17,7 @@ public class DBPerson {
 
     public DBPerson(Context context){
         dbHelper = new DBHelper(context);
-//        Person person = new Person(R.mipmap.ic_launcher,
-//                "曹操","男","155 - 220","豫州沛国谯（安徽亳州市亳县）","魏");
-//        person.setId(insert(person));
+
     }
 
     // 插入三国人物person，返回插入的id

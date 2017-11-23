@@ -1,6 +1,9 @@
 package com.example.christ.thethreekingdoms;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +16,8 @@ import java.util.ArrayList;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 public class MainActivity extends AppCompatActivity {
+
+    final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +49,34 @@ public class MainActivity extends AppCompatActivity {
                 persons.get(position).setPic(R.mipmap.ic_launcher_round);
                 dbPerson.update(persons.get(position));
                 mainAdapter.notifyDataSetChanged();
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("person", persons.get(position));
+                startActivityForResult(intent, REQUEST_CODE);
             }
             // ---------------测试数据库的元组删除--------------------
             // 长按删除
             @Override
-            public void onLongClick(int position) {
-                Toast.makeText(MainActivity.this,"移除第"+String.valueOf(position+1)+"个人物",
-                        Toast.LENGTH_SHORT).show();
-                // 删除数据库相关项
-                dbPerson.delete(persons.get(position).getId());
-                persons.remove(position);
-                mainAdapter.notifyDataSetChanged();
+            public void onLongClick(final int position) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                alertDialog.setTitle("删除人物").setMessage("从列表中移除"
+                        +persons.get(position).getName()+"?").setPositiveButton("确认",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which){
+                                Toast.makeText(MainActivity.this,"移除"+persons.get(position).getName(),
+                                        Toast.LENGTH_SHORT).show();
+                                // 删除数据库相关项
+                                dbPerson.delete(persons.get(position).getId());
+                                persons.remove(position);
+                                mainAdapter.notifyDataSetChanged();
+                            }
+                        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                /*Toast.makeText(MainActivity.this,
+                                        "您选择了取消", Toast.LENGTH_SHORT).show();*/
+                            }
+                        }).create().show();;
             }
         });
 
@@ -88,5 +110,10 @@ public class MainActivity extends AppCompatActivity {
                 mainAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 }
