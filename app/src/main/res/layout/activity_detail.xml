@@ -7,36 +7,30 @@
     tools:context="com.example.christ.thethreekingdoms.DetailActivity">
 
     <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="551dp">
+        android:id="@+id/Information_Layout"
+        android:layout_width="360dp"
+        android:layout_height="551dp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="10dp">
 
         <ImageView
             android:id="@+id/detail_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/name_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/detail_pic"
-            android:layout_below="@+id/detail_pic"
-            android:layout_marginTop="40dp"
-            android:text="姓名" />
-
-        <TextView
-            android:id="@+id/detail_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/name_hint"
-            android:layout_marginStart="89dp"
-            android:layout_toEndOf="@+id/name_hint"
-            android:text="TextView" />
+            android:text="姓名"
+            android:textSize="20dp"
+            android:layout_alignBaseline="@+id/editText5"
+            android:layout_alignBottom="@+id/editText5"
+            android:layout_toEndOf="@+id/back" />
 
         <TextView
             android:id="@+id/sex_hint"
@@ -44,16 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/name_hint"
             android:layout_below="@+id/name_hint"
-            android:layout_marginTop="31dp"
-            android:text="性别" />
-
-        <TextView
-            android:id="@+id/detail_sex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/detail_name"
-            android:layout_alignTop="@+id/sex_hint"
-            android:text="TextView" />
+            android:layout_marginTop="15dp"
+            android:text="性别"
+            android:textSize="20dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/modify_icon"
@@ -62,10 +49,118 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="17dp"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginRight="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/birth_death_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sex_hint"
+            android:layout_below="@+id/sex_hint"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:text="生卒年月" />
+
+        <TextView
+            android:id="@+id/birthplace_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/birth_death_hint"
+            android:layout_below="@+id/birth_death_hint"
+            android:layout_marginTop="22dp"
+            android:text="籍贯" />
+
+        <TextView
+            android:id="@+id/nation_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/birthplace_hint"
+            android:layout_below="@+id/birthplace_hint"
+            android:layout_marginTop="21dp"
+            android:text="势力" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/modify_icon"
+            android:layout_alignStart="@+id/nation_hint"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/button"
+            android:layout_marginEnd="14dp"
+            android:layout_toStartOf="@+id/modify_icon"
+            android:text="Button" />
+
+        <EditText
+            android:id="@+id/editText5"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/modify_icon"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText5"
+            android:layout_below="@+id/editText5"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText6"
+            android:layout_below="@+id/editText6"
+            android:layout_marginTop="11dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editText7"
+            android:layout_below="@+id/editText7"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button"
+            android:layout_alignStart="@+id/editText8"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+
     </RelativeLayout>
+
+
 </android.support.constraint.ConstraintLayout>
